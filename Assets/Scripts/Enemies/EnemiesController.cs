@@ -7,14 +7,14 @@ namespace Enemies
     public class EnemiesController : MonoBehaviour
     {
         [SerializeField] private PlayerController player;
-        [SerializeField] private Enemy enemyPrefab;
+        [SerializeField] private EnemyBase enemyBasePrefab;
         [SerializeField] private Rect instantiationArea;
 
-        private List<Enemy> _instantiatedEnemies;
+        private List<EnemyBase> _instantiatedEnemies;
 
         private void Awake()
         {
-            _instantiatedEnemies = new List<Enemy>();
+            _instantiatedEnemies = new List<EnemyBase>();
         }
 
         private void Update()
@@ -33,16 +33,16 @@ namespace Enemies
                     instantiationArea.x + Random.Range(0f, instantiationArea.width),
                     instantiationArea.y + Random.Range(0f, instantiationArea.height),
                     0f);
-                var newEnemy = Instantiate(enemyPrefab, newEnemyPosition, Quaternion.identity, transform);
+                var newEnemy = Instantiate(enemyBasePrefab, newEnemyPosition, Quaternion.identity, transform);
 
                 _instantiatedEnemies.Add(newEnemy);
                 newEnemy.OnPlayerBeingDestroyed += RemoveEnemyFromList;
             }
         }
 
-        private void RemoveEnemyFromList(Enemy enemy)
+        private void RemoveEnemyFromList(EnemyBase enemyBase)
         {
-            _instantiatedEnemies.Remove(enemy);
+            _instantiatedEnemies.Remove(enemyBase);
         }
     }
 }
