@@ -18,7 +18,7 @@ namespace Player
         // Movement
         public float Speed;
         public Vector2 Orientation;
-        public Direction Direction;
+        public static Direction Direction = Direction.Right;
         public Sprite DirectionUp, DirectionDown, DirectionLeft, DirectionRight;
 
         // health
