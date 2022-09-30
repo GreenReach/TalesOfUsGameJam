@@ -6,16 +6,15 @@ using UnityEngine;
 
 namespace Enemies
 {
-    // [RequireComponent(typeof(CharacterController))]
-    public class Enemy : MonoBehaviour, IDamageable
+    public abstract class EnemyBase : MonoBehaviour, IDamageable
     {
-        public event Action<Enemy> OnPlayerBeingDestroyed;
+        public event Action<EnemyBase> OnPlayerBeingDestroyed;
         
-        [SerializeField] private int hp = 10;
-        [SerializeField] private float movementSpeed = 1f;
-        [SerializeField] private int damage = 3;
-        [SerializeField] private float attackRange;
-        [SerializeField] private float attackCooldown = 0.3f;
+        [SerializeField] protected int hp = 10;
+        [SerializeField] protected float movementSpeed = 1f;
+        [SerializeField] protected int damage = 3;
+        [SerializeField] protected float attackRange;
+        [SerializeField] protected float attackCooldown = 0.3f;
         
         [Header("Dependencies")]
         [SerializeField] private CharacterController characterController;
@@ -45,14 +44,19 @@ namespace Enemies
             var newPosition = Vector3.MoveTowards(currentPosition, targetPosition, movementSpeed * deltaTime);
             var moveVector = newPosition - currentPosition;
 
-            characterController.Move(moveVector);
+            if (!IsPlayerInAttackRange(targetPosition))
+            {
+                characterController.Move(moveVector);
+            }
 
             if (IsPlayerInAttackRange(targetPosition) && !HaveAttackCooldown())
             {
-                target.TakeDamage(damage);
+                Attack(target);
                 _lastAttackTime = Time.time;
             }
         }
+
+        protected abstract void Attack(PlayerController target);
 
         private void UpdateHealthBar()
         {
