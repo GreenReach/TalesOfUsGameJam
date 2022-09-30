@@ -6,6 +6,7 @@ TagManager:
   tags:
   - XP/Normal
   - XP/Double
+  - HealthDrop
   layers:
   - Default
   - TransparentFX

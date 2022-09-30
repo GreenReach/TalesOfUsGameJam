@@ -15,11 +15,12 @@ namespace Player
         // Passive Modifiers
         public float DamageModifier;
         public float SpeedModifier;
+        public int[] PassiveItemsLevels = new int[3];
 
         // Movement
         public float Speed;
         public Vector2 Orientation;
-        public Direction Direction;
+        public GameStructures.Direction Direction;
         public Sprite DirectionUp, DirectionDown, DirectionLeft, DirectionRight;
 
         // health
@@ -40,9 +41,8 @@ namespace Player
             Health = 50;
             MaxHealth = 100;
 
-            GameManager.UpdateLevel(1);
-            GameManager.UpdateExperienceBar(0);
-            GameManager.UpdateHealthBar((float)Health / (float)MaxHealth);
+            SpeedModifier = 1;
+            UpdateUI();
         }
 
 
@@ -58,35 +58,35 @@ namespace Player
             if (Input.GetKey(KeyCode.W))
             {
                 Orientation += Vector2.up;
-                Direction = Direction.Up;
+                Direction = GameStructures.Direction.Up;
                 ren.sprite = DirectionUp;
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 Orientation += Vector2.down;
-                Direction = Direction.Down;
+                Direction = GameStructures.Direction.Down;
                 ren.sprite = DirectionDown;
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 Orientation += Vector2.left;
-                Direction = Direction.Left;
+                Direction = GameStructures.Direction.Left;
                 ren.sprite = DirectionLeft;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 Orientation += Vector2.right;
-                Direction = Direction.Right;
+                Direction = GameStructures.Direction.Right;
                 ren.sprite = DirectionRight;
             }
         }
 
         private void FixedUpdate()
         {
-            rb.velocity = Orientation * Speed;
+            rb.velocity = Orientation * Speed * SpeedModifier;
         }
 
         public void TakeDamage(int amount)
@@ -100,6 +100,43 @@ namespace Player
             Debug.Log($"Increase health by: {amount}");
         }
 
+        public void UpdateUI()
+        {
+            GameManager.UpdateHealthBar((float)Health / (float)MaxHealth);
+            GameManager.UpdateExperienceBar((float)Experience / (float)NextLevelExperience);
+            GameManager.UpdateLevel(1);
+        }
+
+        public void ApplyReward(int rewardId)
+        {
+            if(rewardId == -1)
+            {
+                Health = MaxHealth;
+                UpdateUI();
+            }
+            if(rewardId == 1)
+            {
+                PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Horse]++;
+                SpeedModifier = GameStructures.speedModifiersValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Horse]];
+            }
+
+            if(rewardId == 2)
+            {
+                PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Ambrosia]++;
+                int newMaxHealth = GameStructures.healthUpgradeValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Ambrosia]];
+                Health += newMaxHealth - MaxHealth;
+                MaxHealth = newMaxHealth;
+
+                UpdateUI();
+            }
+
+            if (rewardId == 3)
+            {
+                PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.GiatsHeritage]++;
+                DamageModifier = GameStructures.damageModifierValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.GiatsHeritage]];
+            }
+
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -111,16 +148,17 @@ namespace Player
 
                 if(Experience >= NextLevelExperience)
                 {
-                    // TODO Lvl Up call to UI to chose reward
-
+                   
+                    int reward = 2; // TODO Lvl Up call to UI to chose reward
+                    ApplyReward(reward);
                     Experience -= NextLevelExperience;
                     NextLevelExperience =(int)((float)NextLevelExperience *  1.25); // increase next level threshold
 
                     Level++;
-                    GameManager.UpdateLevel(Level);
+                    UpdateUI();
                 }
 
-                GameManager.UpdateExperienceBar((float)Experience / (float)NextLevelExperience);
+                UpdateUI();
                 Destroy(collision.gameObject);
             }
             else if(collision.gameObject.tag == "HealthDrop")
@@ -130,7 +168,7 @@ namespace Player
                     Health += (int)((float)MaxHealth/4);
                     if (Health > MaxHealth) Health = MaxHealth;
 
-                    GameManager.UpdateHealthBar((float)Health / (float)MaxHealth);
+                    UpdateUI();
                     Destroy(collision.gameObject);
 
                 }
