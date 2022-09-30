@@ -7,7 +7,7 @@ public class Sword : GeneralWeapon
     public GameObject target;
     public float start =45;
     public float finish=135;
-    int dir = 0;
+    public int dir = 0;
     float angle;
     void Start()
     {
@@ -23,12 +23,13 @@ public class Sword : GeneralWeapon
         if (angle >= finish)
         {
             dir = -1;
+            Debug.Log(transform.rotation.z);
         }
-        if (angle < start)
+        if (angle <= start)
         {
             dir = +1;
         }
-        transform.RotateAround(target.transform.position, Vector3.forward, angle);
+        transform.RotateAround(target.transform.position, Vector3.forward, 20 * Time.deltaTime * dir);
     }
 
 }
