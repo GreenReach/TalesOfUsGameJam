@@ -21,7 +21,7 @@ namespace Enemies
         {
             foreach (var enemy in _instantiatedEnemies)
             {
-                enemy.MoveTowardsTarget(player.transform, Time.deltaTime);
+                enemy.MoveTowardsPlayer(player, Time.deltaTime);
             }
         }
 
