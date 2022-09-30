@@ -31,19 +31,19 @@ public class Sword : GeneralWeapon
     void hit(){
         switch (target.gameObject.GetComponent<PlayerController>().Direction)
         {   
-            case Direction.Right:
+            case GameStructures.Direction.Right:
                             this.gameObject.transform.GetChild(0).gameObject.GetComponent<Hitbox>().hit(damage);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxRight");
                             break;
-            case Direction.Up:
+            case GameStructures.Direction.Up:
                             this.gameObject.transform.GetChild(1).gameObject.GetComponent<Hitbox>().hit(damage);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxUp");
                             break; 
-            case Direction.Left:
+            case GameStructures.Direction.Left:
                             this.gameObject.transform.GetChild(2).gameObject.GetComponent<Hitbox>().hit(damage);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxLeft");
                             break;
-            case Direction.Down:
+            case GameStructures.Direction.Down:
                             this.gameObject.transform.GetChild(3).gameObject.GetComponent<Hitbox>().hit(damage);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxDown");
                             break;

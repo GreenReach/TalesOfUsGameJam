@@ -16,7 +16,7 @@ public class Hitbox : MonoBehaviour
  
         foreach(Collider collider in colliders)
         {
-            collider.gameObject.GetComponent<Enemy>().DoDamage(dmg);
+            collider.gameObject.GetComponent<IDamageable>().DoDamage(dmg);
             Debug.Log("aaa");
         }
     }

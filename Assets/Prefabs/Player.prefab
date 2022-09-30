@@ -121,10 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 0}
+  GameManager: {fileID: 0}
   rb: {fileID: 5280432449305364887}
   ren: {fileID: 5280432449305364890}
   DamageModifier: 0
   SpeedModifier: 0
+  PassiveItemsLevels: 000000000000000000000000
   Speed: 10
   Orientation: {x: 0, y: 0}
   Direction: 0
@@ -136,6 +138,7 @@ MonoBehaviour:
   MaxHealth: 0
   Experience: 0
   NextLevelExperience: 0
+  Level: 0
 --- !u!61 &5280432449305364891
 BoxCollider2D:
   m_ObjectHideFlags: 0
