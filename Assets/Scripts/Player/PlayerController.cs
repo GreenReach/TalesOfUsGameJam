@@ -151,7 +151,7 @@ namespace Player
                 if(Experience >= NextLevelExperience)
                 {
                    
-                    int reward = 2; // TODO Lvl Up call to UI to chose reward
+                    int reward = 3; // TODO Lvl Up call to UI to chose reward
                     ApplyReward(reward);
                     Experience -= NextLevelExperience;
                     NextLevelExperience =(int)((float)NextLevelExperience *  1.25); // increase next level threshold
