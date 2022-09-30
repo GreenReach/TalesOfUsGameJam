@@ -93,11 +93,13 @@ namespace Player
         {
             Debug.Log($"Took damage: {amount}");
             Health -= amount;
+            UpdateUI();
         }
 
         public void IncreaseHealth(int amount)
         {
             Debug.Log($"Increase health by: {amount}");
+            UpdateUI();
         }
 
         public void UpdateUI()
