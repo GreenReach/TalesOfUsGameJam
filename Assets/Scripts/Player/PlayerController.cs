@@ -6,12 +6,13 @@ namespace Player
     {
         // Scene Vars
         public GameObject CameraObject;
+        public RobertGameManager GameManager;
 
         // Obj Components
         public Rigidbody2D rb;
         public SpriteRenderer ren;
 
-        // Modifiers
+        // Passive Modifiers
         public float DamageModifier;
         public float SpeedModifier;
 
@@ -27,8 +28,22 @@ namespace Player
 
         // XP
         public int Experience;
-        public int NextLevelExperience;
+        public int NextLevelExperience = 10;
+        public int Level;
 
+        private void Start()
+        {
+            Experience = 0;
+            NextLevelExperience = 10;
+            Level = 1;
+
+            Health = 50;
+            MaxHealth = 100;
+
+            GameManager.UpdateLevel(1);
+            GameManager.UpdateExperienceBar(0);
+            GameManager.UpdateHealthBar((float)Health / (float)MaxHealth);
+        }
 
 
         private void Update()
@@ -67,8 +82,6 @@ namespace Player
                 Direction = Direction.Right;
                 ren.sprite = DirectionRight;
             }
-
-
         }
 
         private void FixedUpdate()
@@ -79,16 +92,49 @@ namespace Player
         public void TakeDamage(int amount)
         {
             Debug.Log($"Took damage: {amount}");
-        }
-
-        public void Heal(int amount)
-        {
-            Debug.Log($"Heal: {amount}");
+            Health -= amount;
         }
 
         public void IncreaseHealth(int amount)
         {
             Debug.Log($"Increase health by: {amount}");
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.Log(collision.gameObject.tag);
+            if (collision.gameObject.tag == "XP/Normal")
+            {
+
+                Experience++;
+
+                if(Experience >= NextLevelExperience)
+                {
+                    // TODO Lvl Up call to UI to chose reward
+
+                    Experience -= NextLevelExperience;
+                    NextLevelExperience =(int)((float)NextLevelExperience *  1.25); // increase next level threshold
+
+                    Level++;
+                    GameManager.UpdateLevel(Level);
+                }
+
+                GameManager.UpdateExperienceBar((float)Experience / (float)NextLevelExperience);
+                Destroy(collision.gameObject);
+            }
+            else if(collision.gameObject.tag == "HealthDrop")
+            {
+                if (Health < MaxHealth)
+                {
+                    Health += (int)((float)MaxHealth/4);
+                    if (Health > MaxHealth) Health = MaxHealth;
+
+                    GameManager.UpdateHealthBar((float)Health / (float)MaxHealth);
+                    Destroy(collision.gameObject);
+
+                }
+            }
         }
     }
 }
