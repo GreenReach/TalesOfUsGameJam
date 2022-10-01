@@ -11,24 +11,33 @@ public class RangeBow : GeneralWeapon
     public float timer = 0;
     public bool first = true;
     public bool stop = false;
+    public bool disabled = true;
+    public float damageBoost = 1;
+    public int arrowNumber = 1;
+    private RobertGameManager Robert;
+    public int currentLevel = 0;
     void Start()
     {
         damage = 5;
         weaponCooldowns = 2f;
+        weaponlvl = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!stop){
-            closestEnemy();
-            timer = weaponCooldowns; 
-            stop = true;   
+        checkLevelUp();
+        if(!disabled){
+            if(!stop){
+                closestEnemy();
+                timer = weaponCooldowns; 
+                stop = true;   
+            }
+            if(timer < 0){
+                stop = false;
+            }
+            timer -= Time.deltaTime;
         }
-        if(timer < 0){
-            stop = false;
-        }
-        timer -= Time.deltaTime;
     }
     
     EnemyBase closestEnemy(){
@@ -46,14 +55,48 @@ public class RangeBow : GeneralWeapon
             }
         }
         if(tMin != null)
-            LaunchProjectileAt(tMin);
+            for(int i = 1; i <= arrowNumber; i++){
+                LaunchProjectileAt(tMin, i-1);
+            }
         return tMin;
     }
 
-    private void LaunchProjectileAt(EnemyBase target)
+    private void LaunchProjectileAt(EnemyBase target, int i)
     {
-        var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity, transform);
-        projectile.transform.right = projectile.transform.position - target.transform.position;
-        projectile.Init(target);
+        
+            var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity, transform);
+            projectile.transform.right = projectile.transform.position - target.transform.position;
+            projectile.Init(target, i);
+    }
+
+    public void LevelUp(){
+        currentLevel++;
+    }
+
+    public void checkLevelUp(){
+        switch (currentLevel)
+        {
+            case 0:
+                    disabled = true;
+                    break;
+            case 1:
+                    disabled = false;
+                    break;
+            case 2:
+                    damageBoost = 1.25f;
+                    break;
+            case 3:
+                    arrowNumber = 2;
+                    break;
+            case 4:
+                    damageBoost = 1.75f;
+                    break;
+            case 5:
+                    arrowNumber = 3;
+                    break;
+            default:
+                    disabled = true;
+                    break;
+        }
     }
 }

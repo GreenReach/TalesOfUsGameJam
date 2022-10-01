@@ -12,9 +12,11 @@ public class Arrow : MonoBehaviour
         
         private EnemyBase _target;
         private Vector3 _direction;
+        public float delay1;
 
-        public void Init(EnemyBase target)
+        public void Init(EnemyBase target, int delay)
         {
+            delay1 = delay*0.1f;
             transform.SetParent(null);
             _target = target;
             _direction = (target.transform.position - transform.position).normalized;
@@ -23,8 +25,11 @@ public class Arrow : MonoBehaviour
 
         private void Update()
         {
-            transform.position += _direction * speed * Time.deltaTime;
-            check();
+            if(delay1 < 0){
+                transform.position += _direction * speed * Time.deltaTime;
+                check();
+            }
+            delay1 -= Time.deltaTime;
         }
 
         private void check()
