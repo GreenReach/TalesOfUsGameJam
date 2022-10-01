@@ -14,7 +14,7 @@ public class RangeBow : GeneralWeapon
     void Start()
     {
         damage = 5;
-        weaponCooldowns = 1.5f;
+        weaponCooldowns = 2f;
     }
 
     // Update is called once per frame
