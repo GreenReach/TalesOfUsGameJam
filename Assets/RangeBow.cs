@@ -7,7 +7,6 @@ public class RangeBow : GeneralWeapon
 {
     // Start is called before the first frame update
     [SerializeField] private Arrow projectilePrefab;
-    public GameObject target;
     public float timer = 0;
     public bool first = true;
     public bool stop = false;
