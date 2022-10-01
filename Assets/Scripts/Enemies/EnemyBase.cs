@@ -1,5 +1,4 @@
-﻿using System;
-using Commons;
+﻿using Commons;
 using Player;
 using UnityEngine;
 
@@ -7,17 +6,19 @@ namespace Enemies
 {
     public abstract class EnemyBase : MonoBehaviour, IDamageable
     {
-        public event Action<EnemyBase> OnPlayerBeingDestroyed;
-        
         [SerializeField] protected int hp = 10;
         [SerializeField] protected float movementSpeed = 1f;
         [SerializeField] protected int damage = 3;
         [SerializeField] protected float attackRange;
         [SerializeField] protected float attackCooldown = 0.3f;
+        [SerializeField] private GameObject[] dropoutItemsPrefabs;
         
         [Header("Dependencies")]
         [SerializeField] private CharacterController characterController;
         [SerializeField] private HealthBar healthBar;
+        [SerializeField] private EnemyLifecycleEventChannel enemyInstantiatedChannel;
+        [SerializeField] private EnemyLifecycleEventChannel enemyDiedChannel;
+
 
         private float _lastAttackTime = -100f;
         private float _maxHp;
@@ -25,10 +26,12 @@ namespace Enemies
         private void Awake()
         {
             _maxHp = hp;
+            enemyInstantiatedChannel.RaiseEvent(this);
         }
 
         public void DoDamage(int amount)
         {
+            Debug.Log($"Do damage: {amount}", this);
             hp -= amount;
             UpdateHealthBar();
             if (hp <= 0)
@@ -65,8 +68,20 @@ namespace Enemies
         
         private void Kill()
         {
-            OnPlayerBeingDestroyed?.Invoke(this);
+            enemyDiedChannel.RaiseEvent(this);
+            SpawnDropouts();
             Destroy(gameObject);
+        }
+
+        private void SpawnDropouts()
+        {
+            if (dropoutItemsPrefabs == null)
+                return;
+
+            foreach (var dropoutItemPrefab in dropoutItemsPrefabs)
+            {
+                var dropoutItem = Instantiate(dropoutItemPrefab, transform.position, Quaternion.identity);
+            }
         }
         
         private bool IsPlayerInAttackRange(Vector3 playerPosition)

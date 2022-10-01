@@ -367,11 +367,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2428189513941972035, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1698427
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2428189513941972035, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4985995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2428189513941972035, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -413,9 +413,17 @@ PrefabInstance:
       propertyPath: CameraObject
       value: 
       objectReference: {fileID: 2003202788}
+    - target: {fileID: 2428189513941972045, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: DamageModifier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2428189513941972047, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
       propertyPath: m_Name
       value: PlayerWithPalos
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651081701652, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56819850fbd273144a25c31bf76769f6, type: 3}

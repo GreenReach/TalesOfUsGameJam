@@ -154,8 +154,12 @@ MonoBehaviour:
   damage: 3
   attackRange: 0
   attackCooldown: 0.3
+  dropoutItemsPrefabs:
+  - {fileID: 1088942496272354058, guid: dde96950c536fd74688e7a828da6ed29, type: 3}
   characterController: {fileID: 7228957534805707608}
   healthBar: {fileID: 5025500630584649143}
+  enemyInstantiatedChannel: {fileID: 11400000, guid: a819f9fad3a4cb349aaf4fe74e362325, type: 2}
+  enemyDiedChannel: {fileID: 11400000, guid: 208c882aaae7a6443b4479d9050b84c0, type: 2}
 --- !u!1001 &1150108282889607458
 PrefabInstance:
   m_ObjectHideFlags: 0

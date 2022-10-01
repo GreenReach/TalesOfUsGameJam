@@ -53,6 +53,8 @@ MonoBehaviour:
     y: -10
     width: 30
     height: 30
+  enemyInstantiatedChannel: {fileID: 11400000, guid: a819f9fad3a4cb349aaf4fe74e362325, type: 2}
+  enemyDiedChannel: {fileID: 11400000, guid: 208c882aaae7a6443b4479d9050b84c0, type: 2}
 --- !u!114 &8187052308371458747
 MonoBehaviour:
   m_ObjectHideFlags: 0

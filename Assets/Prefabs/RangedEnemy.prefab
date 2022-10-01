@@ -153,9 +153,13 @@ MonoBehaviour:
   movementSpeed: 1
   damage: 3
   attackRange: 3
-  attackCooldown: 0.3
+  attackCooldown: 3
+  dropoutItemsPrefabs:
+  - {fileID: 1719628366674771468, guid: 4a27cfda8c18a104785960cce3204c24, type: 3}
   characterController: {fileID: 7228957534805707608}
   healthBar: {fileID: 5025500630584649143}
+  enemyInstantiatedChannel: {fileID: 11400000, guid: a819f9fad3a4cb349aaf4fe74e362325, type: 2}
+  enemyDiedChannel: {fileID: 11400000, guid: 208c882aaae7a6443b4479d9050b84c0, type: 2}
   projectilePrefab: {fileID: 4575010921835588841, guid: 51a5b3f7559816d40ace2759c55a40c1, type: 3}
 --- !u!1001 &1150108282889607458
 PrefabInstance:
