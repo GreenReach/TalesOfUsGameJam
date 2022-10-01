@@ -284,6 +284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7269def612078154e9a5d40e68e815d3, type: 3}
+--- !u!1 &879214644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5752413894070871140, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
+  m_PrefabInstance: {fileID: 5280432447622064625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &953868921
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,11 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb96b11b70e4980952e0818ba0a2d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1036495908138748584 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8990763497575048000, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
-  m_PrefabInstance: {fileID: 5280432447622064625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1088942496670289661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -884,7 +884,7 @@ PrefabInstance:
     - target: {fileID: 5280432449305364886, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
       propertyPath: SwordWeapon
       value: 
-      objectReference: {fileID: 1036495908138748584}
+      objectReference: {fileID: 879214644}
     - target: {fileID: 5280432449305364886, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
       propertyPath: CameraObject
       value: 

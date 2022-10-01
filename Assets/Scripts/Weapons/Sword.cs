@@ -40,19 +40,19 @@ public class Sword : GeneralWeapon
         switch (target.gameObject.GetComponent<PlayerController>().Direction)
         {   
             case GameStructures.Direction.Right:
-                            this.gameObject.transform.GetChild(0).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, range);
+                            this.gameObject.transform.GetChild(0).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, 1, range);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxRight");
                             break;
             case GameStructures.Direction.Up:
-                            this.gameObject.transform.GetChild(1).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, range);
+                            this.gameObject.transform.GetChild(1).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, 2, range);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxUp");
                             break; 
             case GameStructures.Direction.Left:
-                            this.gameObject.transform.GetChild(2).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, -range);
+                            this.gameObject.transform.GetChild(2).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, 3, range);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxLeft");
                             break;
             case GameStructures.Direction.Down:
-                            this.gameObject.transform.GetChild(3).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, -range);
+                            this.gameObject.transform.GetChild(3).gameObject.GetComponent<Hitbox>().hit(damage * damageBoost * target.transform.GetComponent<PlayerController>().DamageModifier, 4, range);
                             this.gameObject.transform.GetChild(4).gameObject.GetComponent<Animation>().Play("HitBoxDown");
                             break;
             default: 

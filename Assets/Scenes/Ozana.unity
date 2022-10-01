@@ -270,6 +270,7 @@ MonoBehaviour:
   LevelText: {fileID: 352947693}
   TimerText: {fileID: 292959626}
   LevelUpMenu: {fileID: 963800678}
+  itemLevelsUIController: {fileID: 0}
   ItemsLevels: 000000000000000000000000000000000000000000000000
 --- !u!4 &568568810
 Transform:
@@ -837,6 +838,46 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 5825224780063929366}
+    - target: {fileID: 4129001817179854809, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817179854809, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817179854809, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129001817292872776, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fad7df0c398785f439c3c9cba804e12e, type: 3}
 --- !u!1001 &4506185900117202015
@@ -910,6 +951,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 1836135246}
   GameManager: {fileID: 568568809}
+  SwordWeapon: {fileID: 0}
+  BowWeapon: {fileID: 0}
+  SpellBookWeapon: {fileID: 0}
   rb: {fileID: 5825224780063929365}
   ren: {fileID: 5825224780063929368}
   DamageModifier: 0
