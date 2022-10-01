@@ -41,6 +41,26 @@ public class LevelUpChoiceController : MonoBehaviour
             Title.text = $"Giants Heritage +{upgradeLevel}";
             Description.text = GameStructures.GiantsHeritageUpgradesDescription[upgradeLevel];
         }
+
+
+
+        if (rewardId == (int)GameStructures.LevelUpListItems.Sword)
+        {
+            Title.text = $"Sword +{upgradeLevel}";
+            Description.text = GameStructures.PalosUpgradesDescription[upgradeLevel];
+        }
+
+        if (rewardId == (int)GameStructures.LevelUpListItems.Bow)
+        {
+            Title.text = $"Bow +{upgradeLevel}";
+            Description.text = GameStructures.BowUpgradesDescription[upgradeLevel];
+        }
+
+        if (rewardId == (int)GameStructures.LevelUpListItems.SpellBook)
+        {
+            Title.text = $"Scholomancy Book +{upgradeLevel}";
+            Description.text = GameStructures.SpellBookUpgradesDescription[upgradeLevel];
+        }
     }
 
     public void Choose()

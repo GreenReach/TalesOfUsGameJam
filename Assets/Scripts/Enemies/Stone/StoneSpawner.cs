@@ -1,12 +1,15 @@
 ﻿using System;
 using Player;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Enemies.Stone
 {
     public class StoneSpawner : MonoBehaviour
     {
+        public UnityEvent<StoneController> onStoneDestroyed;
+        
         [SerializeField] private StoneController stonePrefab;
         [SerializeField] private float maxPlayerDistance = 20f;
         [SerializeField] private PlayerController playerController;
@@ -24,7 +27,11 @@ namespace Enemies.Stone
             InstantiateNextStone();
         }
 
-        private void StoneDestroyedHandler(StoneController stone) => InstantiateNextStone();
+        private void StoneDestroyedHandler(StoneController stone)
+        {
+            onStoneDestroyed?.Invoke(stone);
+            InstantiateNextStone();
+        }
 
         private void InstantiateNextStone()
         {

@@ -64,10 +64,23 @@ public class GameStructures
 
     static public string[] BowUpgradesDescription =
     {
-        "Activate the bow",
+        "Get the bow. Start shooting closest enemy",
         "Increase Damage. +25% Damage",
         "Shoot with two arrows",
         "Increase Damage. +75% Damage",
         "Shoot with three arrows",
     };
+
+    public static string[] SpellBookUpgradesDescription = {
+        "Get a Scholomancy Book that will orbit you, dealing damage to enemies",
+        "Two books orbit you",
+        "Increase damage",
+        "Three books orbit you",
+        "Increase damage"
+    };
+    
+    
+    
+    public const string DamageIncreaseFactorKey = "DamageIncreaseFactor";
+    public const string HpIncreaseAmountKey = "HpIncreaseAmount";
 }

@@ -15,6 +15,7 @@ public class RobertGameManager : MonoBehaviour
     public TextMeshProUGUI TimerText;
 
     public GameObject LevelUpMenu;
+    public ItemLevelsUIController itemLevelsUIController;
 
     public int[] ItemsLevels = new int[6];
 
@@ -54,14 +55,22 @@ public class RobertGameManager : MonoBehaviour
         LevelText.text = $"Level {level}";
     }
 
+    public void UpdateItemLevels()
+    {
+        itemLevelsUIController.LevelUpItems(ItemsLevels);
+    }
+
     public void StartLevelUp()
     {
         LevelUpMenu.SetActive(true);
         Time.timeScale = 0;
     }
 
-    public void FinnishLevelUp()
+    public void FinnishLevelUp(int rewardId)
     {
+
+        //if (rewardId >= 0)
+        //    itemLevelsUIController.LevelUpItem(rewardId, ItemsLevels[rewardId]);
         LevelUpMenu.SetActive(false);
         Time.timeScale = 1;
     }
