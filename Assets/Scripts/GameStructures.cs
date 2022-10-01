@@ -53,4 +53,21 @@ public class GameStructures
         "Increase Damage. +150% Damage",
         "Increase Damage. +200% Damage",
     };
+
+    static public string[] PalosUpgradesDescription =
+    {
+        "Increase Damage. +25% Damage",
+        "Increase AriaDamage. +100% Damage",
+        "Increase Damage. +100% Damage",
+        "Increase AttackSpeed. 50%",
+    };
+
+    static public string[] BowUpgradesDescription =
+    {
+        "Activate the bow",
+        "Increase Damage. +25% Damage",
+        "Shoot with two arrows",
+        "Increase Damage. +75% Damage",
+        "Shoot with three arrows",
+    };
 }

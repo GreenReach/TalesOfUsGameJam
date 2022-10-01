@@ -95,7 +95,6 @@ public class RangeBow : GeneralWeapon
                     arrowNumber = 3;
                     break;
             default:
-                    disabled = true;
                     break;
         }
     }
