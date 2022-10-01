@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Enemies.PrefabPicker;
 using Enemies.Types;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,10 +11,19 @@ namespace Enemies.Spawner
 {
     public class EnemiesSpawner : MonoBehaviour
     {
+        public float DifficultyFactor
+        {
+            get => difficultyFactor;
+            set => difficultyFactor = value;
+        }
+
         [SerializeField] private PlayerController player;
         [SerializeField] private EnemyLifecycleEventChannel enemyInstantiatedChannel;
         [SerializeField] private EnemyLifecycleEventChannel enemyDiedChannel;
         [SerializeField] protected EnemyPickerSO enemyPicker;
+
+        [Header("Debug")] 
+        [SerializeField] private float difficultyFactor = 1f;
         
         protected List<EnemyBase> InstantiatedEnemies;
 
@@ -75,7 +85,8 @@ namespace Enemies.Spawner
         {
             var cameraWorldRect = GetCameraWorldRect(Camera.main);
             var outsidePoint = RandomPointOutsideRect(cameraWorldRect, 2f);
-            Instantiate(enemyPicker.PickNext(), outsidePoint, Quaternion.identity, transform);
+            var newEnemy = Instantiate(enemyPicker.PickNext(), outsidePoint, Quaternion.identity, transform);
+            newEnemy.ApplyDifficultyFactor(DifficultyFactor);
         }
 
         private static Rect GetCameraWorldRect(Camera camera)
