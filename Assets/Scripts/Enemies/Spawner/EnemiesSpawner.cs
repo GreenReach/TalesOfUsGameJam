@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Enemies.PrefabPicker;
 using Enemies.Types;
 using Player;
 using UnityEngine;
@@ -9,16 +11,20 @@ namespace Enemies.Spawner
     public class EnemiesSpawner : MonoBehaviour
     {
         [SerializeField] private PlayerController player;
-        [SerializeField] private EnemyBase enemyBasePrefab;
         [SerializeField] private EnemyLifecycleEventChannel enemyInstantiatedChannel;
         [SerializeField] private EnemyLifecycleEventChannel enemyDiedChannel;
+        [SerializeField] protected EnemyPickerSO enemyPicker;
         
-
-        private List<EnemyBase> _instantiatedEnemies;
+        protected List<EnemyBase> InstantiatedEnemies;
 
         private void Awake()
         {
-            _instantiatedEnemies = new List<EnemyBase>();
+            InstantiatedEnemies = new List<EnemyBase>();
+        }
+
+        private void Reset()
+        {
+            player = FindObjectOfType<PlayerController>();
         }
 
         protected virtual void OnEnable()
@@ -40,20 +46,20 @@ namespace Enemies.Spawner
 
         private void UpdateEnemiesPosition()
         {
-            foreach (var enemy in _instantiatedEnemies)
+            foreach (var enemy in InstantiatedEnemies)
             {
                 enemy.MoveTowardsPlayer(player, Time.deltaTime);
             }
         }
 
-        private void UnregisterEnemy(EnemyBase enemyBase)
+        protected virtual void UnregisterEnemy(EnemyBase enemyBase)
         {
-            _instantiatedEnemies.Remove(enemyBase);
+            InstantiatedEnemies.Remove(enemyBase);
         }
 
-        private void RegisterEnemy(EnemyBase enemyBase)
+        protected virtual void RegisterEnemy(EnemyBase enemyBase)
         {
-            _instantiatedEnemies.Add(enemyBase);
+            InstantiatedEnemies.Add(enemyBase);
         }
 
         
@@ -69,7 +75,7 @@ namespace Enemies.Spawner
         {
             var cameraWorldRect = GetCameraWorldRect(Camera.main);
             var outsidePoint = RandomPointOutsideRect(cameraWorldRect, 2f);
-            Instantiate(enemyBasePrefab, outsidePoint, Quaternion.identity, transform);
+            Instantiate(enemyPicker.PickNext(), outsidePoint, Quaternion.identity, transform);
         }
 
         private static Rect GetCameraWorldRect(Camera camera)

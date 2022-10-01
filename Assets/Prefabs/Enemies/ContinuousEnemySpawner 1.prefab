@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8187052308371458745}
   - component: {fileID: 1477505495449084554}
   m_Layer: 0
-  m_Name: EnemiesSpawner
+  m_Name: ContinuousEnemySpawner 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  enemyBasePrefab: {fileID: 0}
-  enemyInstantiatedChannel: {fileID: 0}
-  enemyDiedChannel: {fileID: 0}
+  enemyInstantiatedChannel: {fileID: 11400000, guid: a819f9fad3a4cb349aaf4fe74e362325, type: 2}
+  enemyDiedChannel: {fileID: 11400000, guid: 208c882aaae7a6443b4479d9050b84c0, type: 2}
+  enemyPicker: {fileID: 11400000, guid: 6ae38d26c1e40834eb105047f3beeaf9, type: 2}
   enemiesPerSecond: 1
