@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Enemies.PrefabPicker;
 using Enemies.Types;
 using Player;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

@@ -5,10 +5,12 @@ namespace Enemies.Spawner
 {
     public class ContinuousEnemiesSpawner : EnemiesSpawner
     {
+        [Header("ContinuousSpecific")]
         [SerializeField] private float enemiesPerSecond = 1f;
+        [SerializeField] private float difficultyFactorIncreasePerMinute = 0.15f;
 
         private IEnumerator _instantiationCoroutine;
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -27,12 +29,11 @@ namespace Enemies.Spawner
 
         private IEnumerator InstantiateOnceIn(float amount)
         {
-            Debug.Log($"Instantiate once in {amount}");
             while (true)
             {
-                Debug.Log("Instantiate");
                 InstantiateEnemies(1);
                 yield return new WaitForSeconds(amount);
+                DifficultyFactor += difficultyFactorIncreasePerMinute * amount / 60f;
             }
         }
     }
