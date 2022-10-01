@@ -1,0 +1,47 @@
+﻿using System;
+using Player;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+namespace Enemies.Stone
+{
+    public class StoneSpawner : MonoBehaviour
+    {
+        [SerializeField] private StoneController stonePrefab;
+        [SerializeField] private float maxPlayerDistance = 20f;
+        [SerializeField] private PlayerController playerController;
+
+        private StoneController _stoneInstance;
+        private int _currentStoneLevel;
+
+        private void Awake()
+        {
+            FillDependencies();
+        }
+
+        private void Start()
+        {
+            InstantiateNextStone();
+        }
+
+        private void StoneDestroyedHandler(StoneController stone) => InstantiateNextStone();
+
+        private void InstantiateNextStone()
+        {
+            var stonePosition = playerController.transform.position + new Vector3(
+                Random.Range(-maxPlayerDistance, maxPlayerDistance),
+                Random.Range(-maxPlayerDistance, maxPlayerDistance));
+            
+            _stoneInstance = Instantiate(stonePrefab, stonePosition, Quaternion.identity, transform);
+            _stoneInstance.SetLevel(_currentStoneLevel);
+            _currentStoneLevel++;
+
+            _stoneInstance.OnStoneDestroyed += StoneDestroyedHandler;
+        }
+
+        private void FillDependencies()
+        {
+            playerController = playerController == null ? playerController : FindObjectOfType<PlayerController>();
+        }
+    }
+}
