@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8187052308371458745}
-  - component: {fileID: 8187052308371458746}
-  - component: {fileID: 8187052308371458747}
+  - component: {fileID: 1477505495449084554}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: EnemiesSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8187052308371458746
+--- !u!114 &1477505495449084554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,30 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8187052308371458744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f184b6f1e5f494da3c32c57ecb9b73b, type: 3}
+  m_Script: {fileID: 11500000, guid: 68e363ba686841a797081fb745fd5b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  enemyBasePrefab: {fileID: 7824715730537722032, guid: 35e68375ad4814e4291958b33e878bce, type: 3}
-  instantiationArea:
-    serializedVersion: 2
-    x: -10
-    y: -10
-    width: 30
-    height: 30
-  enemyInstantiatedChannel: {fileID: 11400000, guid: a819f9fad3a4cb349aaf4fe74e362325, type: 2}
-  enemyDiedChannel: {fileID: 11400000, guid: 208c882aaae7a6443b4479d9050b84c0, type: 2}
---- !u!114 &8187052308371458747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8187052308371458744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b3fc08623d483b9b2b6b429ceb0f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountOfEnemies: 10
-  instantiateAtAwake: 1
+  enemyBasePrefab: {fileID: 0}
+  enemyInstantiatedChannel: {fileID: 0}
+  enemyDiedChannel: {fileID: 0}
+  enemiesPerSecond: 1

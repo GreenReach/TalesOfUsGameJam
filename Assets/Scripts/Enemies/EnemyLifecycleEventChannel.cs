@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies.Types;
+using UnityEngine;
 
 namespace Enemies
 {

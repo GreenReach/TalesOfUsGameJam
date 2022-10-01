@@ -2,7 +2,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Types
 {
     public class RangedEnemy : EnemyBase
     {

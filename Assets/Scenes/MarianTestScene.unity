@@ -777,6 +777,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1477505495449084554, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1252683294}
+    - target: {fileID: 1477505495449084554, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: enemyBasePrefab
+      value: 
+      objectReference: {fileID: 8136038974441007952, guid: aa0781cc72f06294db86fa30bc8e6283, type: 3}
+    - target: {fileID: 1477505495449084554, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: enemyDiedChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 208c882aaae7a6443b4479d9050b84c0, type: 2}
+    - target: {fileID: 1477505495449084554, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: enemyInstantiatedChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: a819f9fad3a4cb349aaf4fe74e362325, type: 2}
     - target: {fileID: 8187052308371458744, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
       propertyPath: m_Name
       value: Enemies
@@ -829,5 +845,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1252683294}
-    m_RemovedComponents: []
+    - target: {fileID: 8187052308371458746, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: enemyBasePrefab
+      value: 
+      objectReference: {fileID: 8136038974441007952, guid: aa0781cc72f06294db86fa30bc8e6283, type: 3}
+    - target: {fileID: 8187052308371458747, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: instantiateAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8187052308371458747, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}

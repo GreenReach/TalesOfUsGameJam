@@ -2,14 +2,14 @@
 using Player;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Types
 {
     public abstract class EnemyBase : MonoBehaviour, IDamageable
     {
         [SerializeField] protected int hp = 10;
         [SerializeField] protected float movementSpeed = 1f;
         [SerializeField] protected int damage = 3;
-        [SerializeField] protected float attackRange;
+        [SerializeField] protected float attackRange = .5f;
         [SerializeField] protected float attackCooldown = 0.3f;
         [SerializeField] private GameObject[] dropoutItemsPrefabs;
         
@@ -69,18 +69,19 @@ namespace Enemies
         private void Kill()
         {
             enemyDiedChannel.RaiseEvent(this);
-            SpawnDropouts();
+            DropLoot();
             Destroy(gameObject);
         }
 
-        private void SpawnDropouts()
+        private void DropLoot()
         {
             if (dropoutItemsPrefabs == null)
                 return;
 
             foreach (var dropoutItemPrefab in dropoutItemsPrefabs)
             {
-                var dropoutItem = Instantiate(dropoutItemPrefab, transform.position, Quaternion.identity);
+                var randomPosition = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                var dropoutItem = Instantiate(dropoutItemPrefab, randomPosition, Quaternion.identity);
             }
         }
         

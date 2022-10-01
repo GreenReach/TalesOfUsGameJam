@@ -1,6 +1,6 @@
 ﻿using Player;
 
-namespace Enemies
+namespace Enemies.Types
 {
     public class MeleeEnemy : EnemyBase
     {
