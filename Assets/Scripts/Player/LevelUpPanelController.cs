@@ -18,20 +18,20 @@ public class LevelUpPanelController : MonoBehaviour
         PlayerController playerController = Player.GetComponent<PlayerController>();
         // TODO get a structure with all levels from weapons + passive items
         int Choice1Reward = Random.Range(0, 3);
-        while(playerController.PassiveItemsLevels[Choice1Reward] > 5)
+        while(Rga.ItemsLevels[Choice1Reward] > 5)
             Choice1Reward = Random.Range(0, 3);
 
         int Choice2Reward = Random.Range(0, 3);
-        while (playerController.PassiveItemsLevels[Choice2Reward] > 5)
+        while (Rga.ItemsLevels[Choice2Reward] > 5)
             Choice2Reward = Random.Range(0, 3);
 
         int Choice3Reward = Random.Range(0, 3);
-        while (playerController.PassiveItemsLevels[Choice3Reward] > 5)
+        while (Rga.ItemsLevels[Choice3Reward] > 5)
             Choice3Reward = Random.Range(0, 3);
 
-        Choice1.GetComponent<LevelUpChoiceController>().Configure(Choice1Reward, playerController.PassiveItemsLevels[Choice1Reward]);
-        Choice2.GetComponent<LevelUpChoiceController>().Configure(Choice2Reward, playerController.PassiveItemsLevels[Choice2Reward]);
-        Choice3.GetComponent<LevelUpChoiceController>().Configure(Choice3Reward, playerController.PassiveItemsLevels[Choice3Reward]);
+        Choice1.GetComponent<LevelUpChoiceController>().Configure(Choice1Reward, Rga.ItemsLevels[Choice1Reward]);
+        Choice2.GetComponent<LevelUpChoiceController>().Configure(Choice2Reward, Rga.ItemsLevels[Choice2Reward]);
+        Choice3.GetComponent<LevelUpChoiceController>().Configure(Choice3Reward, Rga.ItemsLevels[Choice3Reward]);
 
     }
 

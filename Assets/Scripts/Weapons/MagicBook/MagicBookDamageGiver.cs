@@ -1,12 +1,17 @@
 ﻿using Enemies;
 using Player;
-using TMPro;
 using UnityEngine;
 
 namespace Weapons.MagicBook
 {
     public class MagicBookDamageGiver : MonoBehaviour
     {
+        public int Damage
+        {
+            get => damage;
+            set => damage = value;
+        }
+        
         [SerializeField] private int damage = 3;
         [SerializeField] private float hitCooldown = 0.3f;
 
@@ -17,7 +22,7 @@ namespace Weapons.MagicBook
         {
             _playerController = playerController;
         }
-        
+
         private void OnTriggerEnter(Collider col)
         {
             Debug.Log($"Book collided with {col.name}");

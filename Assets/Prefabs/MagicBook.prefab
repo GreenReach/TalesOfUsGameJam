@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e326687b058fd814b854a4c28ae27c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfBooks: 1
+  startingLevel: 0
   rotatingSpeed: 30
   circleRadius: 1.5
   magicBookDamageGiverPrefab: {fileID: 8256487102399128197, guid: 90010e168b33eff4cbba6ce3196914f4, type: 3}
+  levelDataSO: {fileID: 11400000, guid: 0648b6034108b054c8beedca6f7760f5, type: 2}

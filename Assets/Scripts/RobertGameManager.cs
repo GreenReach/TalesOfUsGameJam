@@ -7,21 +7,45 @@ public class RobertGameManager : MonoBehaviour
 {
     // HUD
     public Image ExperienceBar;
+    public TextMeshProUGUI ExperienceText;
+
     public Image HealthBar;
+    public TextMeshProUGUI HealthText;
     public TextMeshProUGUI LevelText;
+    public TextMeshProUGUI TimerText;
 
     public GameObject LevelUpMenu;
 
     public int[] ItemsLevels = new int[6];
 
-    public void UpdateExperienceBar(float percent)
+    private float timer;
+
+    private void Start()
     {
-        ExperienceBar.fillAmount = percent;
+        timer = 0;
     }
 
-    public void UpdateHealthBar(float percent)
+    private void Update()
     {
-        HealthBar.fillAmount = percent;
+        timer += Time.deltaTime;
+
+        int minutes = (int)timer / 60;
+        TimerText.text = minutes > 9 ? $"{minutes}:" : $"0{minutes}:";
+
+        int seconds = (int)timer % 60;
+        TimerText.text += seconds > 9 ? $"{seconds}" : $"0{seconds}";
+    }
+
+    public void UpdateExperienceBar(float experience, float nextLevelExperience)
+    {
+        ExperienceBar.fillAmount = experience / nextLevelExperience;
+        ExperienceText.text = $"{experience}/{nextLevelExperience}";
+    }
+
+    public void UpdateHealthBar(float health, float maxHealth)
+    {
+        HealthBar.fillAmount = health / maxHealth;
+        HealthText.text = $"{health}/{maxHealth}";
     }
 
 

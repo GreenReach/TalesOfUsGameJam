@@ -1,20 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Player;
-using Unity.VisualScripting;
 using UnityEngine;
 using Weapons.MagicBook;
 
 public class MagicBookController : MonoBehaviour
 {
-    [SerializeField] private int numberOfBooks = 1;
+    [SerializeField] private int startingLevel;
     [SerializeField] private float rotatingSpeed = 90f;
     [SerializeField] private float circleRadius = 1.5f;
     [SerializeField] private MagicBookDamageGiver magicBookDamageGiverPrefab;
+    [SerializeField] private MagicBookLevelDataSO levelDataSO;
 
     private PlayerController _playerController;
     private MagicBookDamageGiver[] _currentDamageGivers;
+    private int _currentLevel;
+    private int _numberOfBooks;
 
     private void OnEnable()
     {
@@ -23,8 +23,12 @@ public class MagicBookController : MonoBehaviour
         {
             Debug.LogError("[MagicBookController] This should be a child of Player");
         }
-        
-        SetNumberOfBooks(numberOfBooks);
+    }
+
+    private void Start()
+    {
+        _currentLevel = startingLevel;
+        SetLevel(_currentLevel);
     }
 
     private void Update()
@@ -32,7 +36,26 @@ public class MagicBookController : MonoBehaviour
         transform.Rotate(Vector3.forward, rotatingSpeed * Time.deltaTime);
     }
 
-    public void SetNumberOfBooks(int number)
+    [ContextMenu("LevelUp")]
+    public void LevelUp()
+    {
+        _currentLevel++;
+        SetLevel(_currentLevel);
+    }
+
+    private void SetLevel(int level)
+    {
+        level = Mathf.Min(level, levelDataSO.levelData.Length - 1);
+
+        var levelData = levelDataSO.levelData[level];
+        SetNumberOfBooks(levelData.numberOfBooks);
+        
+        if(levelData.numberOfBooks > 0)
+            foreach (var book in _currentDamageGivers)
+                book.Damage = levelData.damage;
+    }
+
+    private void SetNumberOfBooks(int number)
     {
         if (_currentDamageGivers != null)
         {

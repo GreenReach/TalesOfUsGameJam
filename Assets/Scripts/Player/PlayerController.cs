@@ -15,7 +15,6 @@ namespace Player
         // Passive Modifiers
         public float DamageModifier;
         public float SpeedModifier;
-        public int[] PassiveItemsLevels = new int[3];
 
         // Movement
         public float Speed;
@@ -103,9 +102,9 @@ namespace Player
 
         public void UpdateUI()
         {
-            GameManager.UpdateHealthBar((float)Health / (float)MaxHealth);
-            GameManager.UpdateExperienceBar((float)Experience / (float)NextLevelExperience);
-            GameManager.UpdateLevel(1);
+            GameManager.UpdateHealthBar(Health, MaxHealth);
+            GameManager.UpdateExperienceBar(Experience, NextLevelExperience);
+            GameManager.UpdateLevel(Level);
         }
 
         public void ApplyReward(int rewardId)
@@ -115,28 +114,29 @@ namespace Player
                 Health = MaxHealth;
                 UpdateUI();
             }
-            if(rewardId == 0)
+
+            if(rewardId == (int)GameStructures.LevelUpListItems.Horse)
             {
-                PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Horse]++;
-                SpeedModifier = GameStructures.speedModifiersValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Horse]];
+                GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Horse]++;
+                SpeedModifier = GameStructures.speedModifiersValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Horse]];
             }
 
-            if(rewardId == 1)
+            if(rewardId == (int)GameStructures.LevelUpListItems.Ambrosia)
             {
-                PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Ambrosia]++;
-                int newMaxHealth = GameStructures.healthUpgradeValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Ambrosia]];
+                GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Ambrosia]++;
+                int newMaxHealth = GameStructures.healthUpgradeValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Ambrosia]];
                 Health += newMaxHealth - MaxHealth;
                 MaxHealth = newMaxHealth;
 
-                UpdateUI();
             }
 
-            if (rewardId == 2)
+            if (rewardId == (int)GameStructures.LevelUpListItems.GiantsHeritage)
             {
-                PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.GiatsHeritage]++;
-                DamageModifier = GameStructures.damageModifierValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.GiatsHeritage]];
+                GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.GiantsHeritage]++;
+                DamageModifier = GameStructures.damageModifierValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.GiantsHeritage]];
             }
 
+            UpdateUI();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
