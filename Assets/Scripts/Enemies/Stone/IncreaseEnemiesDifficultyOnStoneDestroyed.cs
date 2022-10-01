@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using Enemies.Spawner;
+using UnityEngine;
 
 namespace Enemies.Stone
 {
     public class IncreaseEnemiesDifficultyOnStoneDestroyed : MonoBehaviour
     {
-        public float difficultyIncreaseFactor = 0.33f;
+        [SerializeField] private EnemiesSpawner enemiesSpawner;
+        [SerializeField] private float difficultyIncreaseFactor = 0.33f;
         
         public void IncreaseDifficulty()
         {
-            
+            enemiesSpawner.DifficultyFactor *= (1f + difficultyIncreaseFactor);
         }
     }
 }

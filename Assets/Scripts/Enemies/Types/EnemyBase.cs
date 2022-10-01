@@ -1,4 +1,5 @@
 ﻿using Commons;
+using Enemies.Stone;
 using Player;
 using UnityEngine;
 
@@ -58,6 +59,12 @@ namespace Enemies.Types
             }
         }
 
+        public void ApplyDifficultyFactor(float factor)
+        {
+            hp = (int)(hp * factor);
+            damage = (int)(damage * factor);
+        }
+        
         protected abstract void Attack(PlayerController target);
 
         private void UpdateHealthBar()
