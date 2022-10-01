@@ -42,6 +42,7 @@ namespace Player
             MaxHealth = 100;
 
             SpeedModifier = 1;
+            DamageModifier = 1;
             UpdateUI();
         }
 
@@ -114,13 +115,13 @@ namespace Player
                 Health = MaxHealth;
                 UpdateUI();
             }
-            if(rewardId == 1)
+            if(rewardId == 0)
             {
                 PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Horse]++;
                 SpeedModifier = GameStructures.speedModifiersValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Horse]];
             }
 
-            if(rewardId == 2)
+            if(rewardId == 1)
             {
                 PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Ambrosia]++;
                 int newMaxHealth = GameStructures.healthUpgradeValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.Ambrosia]];
@@ -130,7 +131,7 @@ namespace Player
                 UpdateUI();
             }
 
-            if (rewardId == 3)
+            if (rewardId == 2)
             {
                 PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.GiatsHeritage]++;
                 DamageModifier = GameStructures.damageModifierValues[PassiveItemsLevels[(int)GameStructures.PassiveItemLocation.GiatsHeritage]];
@@ -148,9 +149,8 @@ namespace Player
 
                 if(Experience >= NextLevelExperience)
                 {
-                   
-                    int reward = 3; // TODO Lvl Up call to UI to chose reward
-                    ApplyReward(reward);
+
+                    GameManager.StartLevelUp();
                     Experience -= NextLevelExperience;
                     NextLevelExperience =(int)((float)NextLevelExperience *  1.25); // increase next level threshold
 

@@ -19,7 +19,45 @@ public class GameStructures
         GiatsHeritage
     }
 
-    static public float[] speedModifiersValues = { 1f, 1.25f, 1.5f, 2f, 2.5f };
-    static public float[] damageModifierValues = { 1f, 1.25f, 1.5f, 2f, 2.5f };
-    static public int[] healthUpgradeValues = { 100, 125, 150, 200, 250 };
+    static public float[] speedModifiersValues = { 1f, 1.25f, 1.5f, 2f, 2.5f, 3f };
+    static public float[] damageModifierValues = { 1f, 1.25f, 1.5f, 2f, 2.5f, 3f };
+    static public int[] healthUpgradeValues = { 100, 125, 150, 200, 250, 300 };
+
+    public enum LevelUpListItems
+    {
+        Horse,
+        Ambrosia,
+        GiantsHeritage,
+        Sword,
+        Bow,
+        SpellBook
+    }
+
+    static public string[] HorseUpgradesDescription =
+    {
+        "Move faster. +25% Movement speed",
+        "Move faster. +50% Movement speed",
+        "Move faster. +100% Movement speed",
+        "Move faster. +150% Movement speed",
+        "Move faster. +200% Movement speed",
+    };
+
+
+    static public string[] AmbrosiaUpgradesDescription =
+    {
+        "Increase Max Health. +25% Max Health",
+        "Increase Max Health. +50% Max Health",
+        "Increase Max Health. +100% Max Health",
+        "Increase Max Health. +150% Max Health",
+        "Increase Max Health. +200% Max Health",
+    };
+
+    static public string[] GiantsHeritageUpgradesDescription =
+    {
+        "Increase Damage. +25% Damage",
+        "Increase Damage. +50% Damage",
+        "Increase Damage. +100% Damage",
+        "Increase Damage. +150% Damage",
+        "Increase Damage. +200% Damage",
+    };
 }

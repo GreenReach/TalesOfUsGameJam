@@ -5,12 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 public class RobertGameManager : MonoBehaviour
 {
-
+    // HUD
     public Image ExperienceBar;
     public Image HealthBar;
-
     public TextMeshProUGUI LevelText;
-    // Receives current percent of XP
+
+    public GameObject LevelUpMenu;
+
+    public int[] ItemsLevels = new int[6];
+
     public void UpdateExperienceBar(float percent)
     {
         ExperienceBar.fillAmount = percent;
@@ -25,5 +28,17 @@ public class RobertGameManager : MonoBehaviour
     public void UpdateLevel(int level)
     {
         LevelText.text = $"Level {level}";
+    }
+
+    public void StartLevelUp()
+    {
+        LevelUpMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void FinnishLevelUp()
+    {
+        LevelUpMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 }
