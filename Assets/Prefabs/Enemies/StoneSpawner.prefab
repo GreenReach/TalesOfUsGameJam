@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1314283543707247140}
   - component: {fileID: 1314283543707247141}
   - component: {fileID: 7718833907703789809}
+  - component: {fileID: 3672804739372414662}
   m_Layer: 0
   m_Name: StoneSpawner
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  stonePrefab: {fileID: 0}
+  stonePrefab: {fileID: 4845301937094900550, guid: 4163a69c2bfc3724695b058b93524e29, type: 3}
   maxPlayerDistance: 20
   playerController: {fileID: 0}
 --- !u!114 &7718833907703789809
@@ -77,3 +78,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIncreaseFactor: 0.01
   hpIncreaseRate: 2
+--- !u!114 &3672804739372414662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314283543707247143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b355f6ba3a646adbfb4798652cd9e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesSpawner: {fileID: 0}
+  difficultyIncreaseFactor: 0.33
