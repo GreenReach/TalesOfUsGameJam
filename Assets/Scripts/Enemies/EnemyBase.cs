@@ -66,7 +66,7 @@ namespace Enemies
         private void Kill()
         {
             OnPlayerBeingDestroyed?.Invoke(this);
-            Destroy(this);
+            Destroy(gameObject);
         }
         
         private bool IsPlayerInAttackRange(Vector3 playerPosition)
