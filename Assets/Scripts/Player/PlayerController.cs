@@ -8,6 +8,11 @@ namespace Player
         public GameObject CameraObject;
         public RobertGameManager GameManager;
 
+        // Weapons
+        public GameObject SwordWeapon;
+        public GameObject BowWeapon;
+        public GameObject SpellBookWeapon;
+
         // Obj Components
         public Rigidbody2D rb;
         public SpriteRenderer ren;
@@ -105,6 +110,7 @@ namespace Player
             GameManager.UpdateHealthBar(Health, MaxHealth);
             GameManager.UpdateExperienceBar(Experience, NextLevelExperience);
             GameManager.UpdateLevel(Level);
+            GameManager.UpdateItemLevels();
         }
 
         public void ApplyReward(int rewardId)
@@ -112,7 +118,6 @@ namespace Player
             if(rewardId == -1)
             {
                 Health = MaxHealth;
-                UpdateUI();
             }
 
             if(rewardId == (int)GameStructures.LevelUpListItems.Horse)
@@ -136,6 +141,24 @@ namespace Player
                 DamageModifier = GameStructures.damageModifierValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.GiantsHeritage]];
             }
 
+
+            if(rewardId == (int)GameStructures.LevelUpListItems.Sword)
+            {
+                GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Sword]++;
+                SwordWeapon.GetComponent<Sword>().LevelUp();
+            }
+
+            if (rewardId == (int)GameStructures.LevelUpListItems.Bow)
+            {
+                GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Bow]++;
+                BowWeapon.GetComponent<RangeBow>().LevelUp();
+            }
+
+            if (rewardId == (int)GameStructures.LevelUpListItems.SpellBook)
+            {
+                GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.SpellBook]++;
+                SpellBookWeapon.GetComponent<MagicBookController>().LevelUp();
+            }
             UpdateUI();
         }
 

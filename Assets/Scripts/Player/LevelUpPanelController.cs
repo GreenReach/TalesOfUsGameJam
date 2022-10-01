@@ -14,20 +14,19 @@ public class LevelUpPanelController : MonoBehaviour
 
     public void OnEnable()
     {
-
         PlayerController playerController = Player.GetComponent<PlayerController>();
         // TODO get a structure with all levels from weapons + passive items
-        int Choice1Reward = Random.Range(0, 3);
+        int Choice1Reward = Random.Range(0, 6);
         while(Rga.ItemsLevels[Choice1Reward] > 5)
-            Choice1Reward = Random.Range(0, 3);
+            Choice1Reward = Random.Range(0, 6);
 
-        int Choice2Reward = Random.Range(0, 3);
+        int Choice2Reward = Random.Range(0, 6);
         while (Rga.ItemsLevels[Choice2Reward] > 5)
-            Choice2Reward = Random.Range(0, 3);
+            Choice2Reward = Random.Range(0, 6);
 
-        int Choice3Reward = Random.Range(0, 3);
+        int Choice3Reward = Random.Range(0, 6);
         while (Rga.ItemsLevels[Choice3Reward] > 5)
-            Choice3Reward = Random.Range(0, 3);
+            Choice3Reward = Random.Range(0, 6);
 
         Choice1.GetComponent<LevelUpChoiceController>().Configure(Choice1Reward, Rga.ItemsLevels[Choice1Reward]);
         Choice2.GetComponent<LevelUpChoiceController>().Configure(Choice2Reward, Rga.ItemsLevels[Choice2Reward]);
@@ -38,14 +37,14 @@ public class LevelUpPanelController : MonoBehaviour
     public void RewardChoice(int rewardId)
     {
         Player.GetComponent<PlayerController>().ApplyReward(rewardId);
-        Rga.FinnishLevelUp();
+        Rga.FinnishLevelUp(rewardId);
 
     }
 
     public void FullHealChoice()
     {
         Player.GetComponent<PlayerController>().ApplyReward(-1);
-        Rga.FinnishLevelUp();
+        Rga.FinnishLevelUp(-1);
     }
 
 
