@@ -202,6 +202,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &504034169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 504034170}
+  - component: {fileID: 504034172}
+  - component: {fileID: 504034171}
+  m_Layer: 0
+  m_Name: bow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &504034170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504034169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991992418}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &504034171
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504034169}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &504034172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504034169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb50f4d636ca894d90978cbb6dcee30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  cooldown: 0
+  weaponCooldowns: 0
+  weaponlvl: 0
+  projectilePrefab: {fileID: 3019584853858666436, guid: 31e0beb16cb47f54fb56f09dc1fcd3b9, type: 3}
+  target: {fileID: 0}
+  timer: 0
+  first: 1
+  stop: 0
 --- !u!1 &568568808
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +423,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 737147076841767266, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628289661}
     - target: {fileID: 8187052308371458744, guid: 2eb84d0214b91964195480d0c9add0bd, type: 3}
       propertyPath: m_Name
       value: Enemies
@@ -724,6 +798,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1991992418 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2428189513941972035, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+  m_PrefabInstance: {fileID: 8171203651203072089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8171203651203072089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -786,6 +865,34 @@ PrefabInstance:
     - target: {fileID: 2428189513941972047, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
       propertyPath: m_Name
       value: PlayerWithPalos
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651310954684, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.747
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651310954686, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651310954686, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651310954686, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651310954686, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171203651310954686, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fdefaf1b83a5474b9adcf7a7e6406a0, type: 3}
+    - target: {fileID: 8171203651310954686, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56819850fbd273144a25c31bf76769f6, type: 3}
