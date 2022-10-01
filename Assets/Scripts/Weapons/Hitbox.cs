@@ -11,13 +11,14 @@ public class Hitbox : MonoBehaviour
         
     }
 
-    public void hit(int dmg){
+    public void hit(float dmg){
         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale/2, transform.rotation, LayerMask.GetMask("Default"));
  
         foreach(Collider collider in colliders)
         {
-            collider.gameObject.GetComponent<IDamageable>().DoDamage(dmg);
-            Debug.Log("aaa");
+            if(collider.gameObject.GetComponent<IDamageable>() != null){
+                collider.gameObject.GetComponent<IDamageable>().DoDamage((int)dmg);
+            }
         }
     }
 }
