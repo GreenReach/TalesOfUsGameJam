@@ -60,7 +60,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  stonePrefab: {fileID: 0}
+  stonePrefab: {fileID: 4845301937094900550, guid: 4163a69c2bfc3724695b058b93524e29, type: 3}
   maxPlayerDistance: 20
   playerController: {fileID: 0}
 --- !u!114 &7718833907703789809
