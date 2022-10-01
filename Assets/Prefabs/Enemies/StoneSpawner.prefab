@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314283543707247140}
   - component: {fileID: 1314283543707247141}
+  - component: {fileID: 7718833907703789809}
   m_Layer: 0
   m_Name: StoneSpawner
   m_TagString: Untagged
@@ -44,6 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc0e5a2dbb84a31a66795261c2d3fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStoneDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7718833907703789809}
+        m_TargetAssemblyTypeName: Enemies.Stone.StoneDestroyedRewardSystem, Assembly-CSharp
+        m_MethodName: StoneDestroyed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   stonePrefab: {fileID: 0}
   maxPlayerDistance: 20
   playerController: {fileID: 0}
+--- !u!114 &7718833907703789809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314283543707247143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6737c3619240558eb4ce798ac299e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageIncreaseFactor: 0.01
+  hpIncreaseRate: 2
