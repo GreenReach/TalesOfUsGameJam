@@ -42,8 +42,8 @@ namespace Player
             NextLevelExperience = 10;
             Level = 1;
 
-            Health = 50;
-            MaxHealth = 100;
+            //Health = 50;
+            //MaxHealth = 100;
 
             SpeedModifier = 1;
             DamageModifier = 1;
@@ -98,6 +98,9 @@ namespace Player
         {
             Health -= amount;
             UpdateUI();
+
+            if (Health <= 0)
+                GameManager.GameOver();
         }
 
         public void IncreaseHealth(int amount)
@@ -130,8 +133,8 @@ namespace Player
             {
                 GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Ambrosia]++;
                 int newMaxHealth = GameStructures.healthUpgradeValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.Ambrosia]];
-                Health += newMaxHealth - MaxHealth;
-                MaxHealth = newMaxHealth;
+                Health += newMaxHealth;
+                MaxHealth += newMaxHealth;
 
             }
 

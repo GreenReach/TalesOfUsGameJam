@@ -17,6 +17,8 @@ public class RobertGameManager : MonoBehaviour
     public GameObject LevelUpMenu;
     public ItemLevelsUIController itemLevelsUIController;
 
+    public GameObject DeathMenu;
+
     public int[] ItemsLevels = new int[6];
 
     private float timer;
@@ -70,5 +72,11 @@ public class RobertGameManager : MonoBehaviour
     {
         LevelUpMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void GameOver()
+    {
+        DeathMenu.SetActive(true);
+        Time.timeScale = 0;
     }
 }
