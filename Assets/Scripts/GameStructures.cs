@@ -14,7 +14,7 @@ public class GameStructures
 
     static public float[] speedModifiersValues = { 1f, 1.25f, 1.5f, 2f, 2.5f, 3f };
     static public float[] damageModifierValues = { 1f, 1.25f, 1.5f, 2f, 2.5f, 3f };
-    static public int[] healthUpgradeValues = { 500, 500, 1000, 1000, 2000, 2000 };
+    static public int[] healthUpgradeValues = { 50, 50, 100, 100, 150, 150 };
 
     public enum LevelUpListItems
     {
@@ -38,11 +38,11 @@ public class GameStructures
 
     static public string[] AmbrosiaUpgradesDescription =
     {
-        "Increase Max Health. +50% Max Health",
-        "Increase Max Health. +100% Max Health",
-        "Increase Max Health. +200% Max Health",
-        "Increase Max Health. +400% Max Health",
-        "Increase Max Health. +600% Max Health",
+        "Increase Max Health. 50 HP Max Health",
+        "Increase Max Health. 50 HP Max Health",
+        "Increase Max Health. 100 HP Max Health",
+        "Increase Max Health. 100 HP Max Health",
+        "Increase Max Health. 150 HP Max Health",
     };
 
     static public string[] GiantsHeritageUpgradesDescription =

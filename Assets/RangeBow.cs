@@ -46,10 +46,11 @@ public class RangeBow : GeneralWeapon
         Vector3 currentPos = transform.position;
         foreach(Collider collider in colliders)
         {
+            var enemyComponent = collider.gameObject.GetComponent<EnemyBase>();
             float dist = Vector3.Distance(collider.transform.position, currentPos);
-            if (dist < minDist)
+            if (dist < minDist && enemyComponent != null)
             {
-                tMin = collider.gameObject.GetComponent<EnemyBase>();
+                tMin = enemyComponent;
                 minDist = dist;
             }
         }

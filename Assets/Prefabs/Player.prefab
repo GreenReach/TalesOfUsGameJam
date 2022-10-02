@@ -235,8 +235,8 @@ MonoBehaviour:
   DirectionDown: {fileID: 21300000, guid: b955c976c19854d488cf75b2303d7702, type: 3}
   DirectionLeft: {fileID: 21300000, guid: bacfcccc357a6f742ab4366945314d96, type: 3}
   DirectionRight: {fileID: 21300000, guid: b4e3aaed8bc444c42a7cc8f0c3149e69, type: 3}
-  Health: 500
-  MaxHealth: 500
+  Health: 100
+  MaxHealth: 100
   Experience: 0
   NextLevelExperience: 10
   Level: 1

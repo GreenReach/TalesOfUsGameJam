@@ -457,6 +457,7 @@ MonoBehaviour:
   TimerText: {fileID: 2507867138585888382}
   LevelUpMenu: {fileID: 8401158696079315887}
   itemLevelsUIController: {fileID: 2849321092959574828}
+  DeathMenu: {fileID: 1599938749117054602}
   ItemsLevels: 000000000000000000000000000000000000000000000000
 --- !u!114 &1430217378 stripped
 MonoBehaviour:
@@ -517,9 +518,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5280432449305364886, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
+      propertyPath: Health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280432449305364886, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
       propertyPath: BowWeapon
       value: 
       objectReference: {fileID: 747271868}
+    - target: {fileID: 5280432449305364886, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
+      propertyPath: MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5280432449305364886, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
       propertyPath: GameManager
       value: 
@@ -1082,6 +1091,11 @@ PrefabInstance:
       objectReference: {fileID: 1935925032}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dde96950c536fd74688e7a828da6ed29, type: 3}
+--- !u!1 &1599938749117054602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3556868482902417773, guid: dde96950c536fd74688e7a828da6ed29, type: 3}
+  m_PrefabInstance: {fileID: 1599938749117054601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2054620856571621569 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 772197016004349512, guid: dde96950c536fd74688e7a828da6ed29, type: 3}
