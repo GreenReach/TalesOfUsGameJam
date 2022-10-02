@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a5b1ba15ae3ec6b429bbc9143adc4ce9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7283a3c9f3445734b82ebf9bd691ef47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   DirectionUp: {fileID: 21300000, guid: 461614bbd40ef454f885eafcfc3fc63a, type: 3}
   DirectionDown: {fileID: 21300000, guid: 20bed788055052f42871f6f282f33b48, type: 3}
   DirectionLeft: {fileID: 21300000, guid: 76a85fada368b714c9fc6fffe5a3cbc7, type: 3}
-  DirectionRight: {fileID: 21300000, guid: a5b1ba15ae3ec6b429bbc9143adc4ce9, type: 3}
+  DirectionRight: {fileID: 21300000, guid: 7283a3c9f3445734b82ebf9bd691ef47, type: 3}
   Health: 500
   MaxHealth: 500
   Experience: 0

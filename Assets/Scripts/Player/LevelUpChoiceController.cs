@@ -13,6 +13,8 @@ public class LevelUpChoiceController : MonoBehaviour
     public Image Icon;
     public Button button;
 
+    public Sprite[] itemSprites = new Sprite[6];
+
     public int rewardId;
 
     private void Start()
@@ -23,8 +25,9 @@ public class LevelUpChoiceController : MonoBehaviour
     public void Configure(int rewardId, int upgradeLevel)
     {
         this.rewardId = rewardId;
+        Icon.sprite = itemSprites[rewardId];
         // TODO icon
-        if(rewardId == (int)GameStructures.LevelUpListItems.Horse)
+        if (rewardId == (int)GameStructures.LevelUpListItems.Horse)
         {
             Title.text = $"Horse +{upgradeLevel}";
             Description.text = GameStructures.HorseUpgradesDescription[upgradeLevel];
