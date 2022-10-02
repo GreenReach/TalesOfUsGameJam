@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 82801110741637715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.023, y: 0.003, z: 0}
-  m_LocalScale: {x: 3.3379, y: 3.6907, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7743885405226429563}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 046c68319104e6842aaf9a94740d3143, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1dfbacb861b8fb84793f4108c2552ce9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   damage: 3
   attackRange: 0.5
   attackCooldown: 0.3
+  backlashAmount: 0.7
   dropoutItemsPrefabs:
   - {fileID: 1719628366674771468, guid: 4a27cfda8c18a104785960cce3204c24, type: 3}
   - {fileID: 7743885405226429566, guid: fb98390aa85fae44c88e5fe43072b908, type: 3}

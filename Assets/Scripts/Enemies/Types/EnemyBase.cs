@@ -53,6 +53,7 @@ namespace Enemies.Types
             var newPosition = Vector3.MoveTowards(currentPosition, targetPosition, movementSpeed * deltaTime);
             var moveVector = newPosition - currentPosition;
 
+            FaceTarget();
             if (!IsPlayerInAttackRange(targetPosition))
             {
                 characterController.Move(moveVector);
@@ -72,6 +73,16 @@ namespace Enemies.Types
         }
 
         protected abstract void Attack(PlayerController target);
+
+        private void FaceTarget()
+        {
+            var targetPosition = _target.transform.position;
+            var myPosition = transform.position;
+            if (targetPosition.x < myPosition.x)
+                transform.localEulerAngles = Vector3.zero;
+            else
+                transform.localEulerAngles = Vector3.up * 180f;
+        }
 
         private void ApplyBacklash()
         {
