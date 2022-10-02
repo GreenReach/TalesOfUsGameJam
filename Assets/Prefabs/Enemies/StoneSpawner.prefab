@@ -64,6 +64,7 @@ MonoBehaviour:
   stonePrefab: {fileID: 4845301937094900550, guid: 4163a69c2bfc3724695b058b93524e29, type: 3}
   maxPlayerDistance: 20
   playerController: {fileID: 0}
+  indicator: {fileID: 0}
 --- !u!114 &7718833907703789809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIncreaseFactor: 0.01
   hpIncreaseRate: 2
+  notificationChannel: {fileID: 11400000, guid: 0c8667a772d2f404ab7595752289a563, type: 2}
 --- !u!114 &3672804739372414662
 MonoBehaviour:
   m_ObjectHideFlags: 0
