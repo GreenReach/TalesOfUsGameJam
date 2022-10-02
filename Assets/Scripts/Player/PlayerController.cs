@@ -21,6 +21,9 @@ namespace Player
         public float DamageModifier;
         public float SpeedModifier;
 
+        public int PermanentHealthAddition;
+        public float PermanentDamageAddition;
+
         // Movement
         public float Speed;
         public Vector2 Orientation;
@@ -29,24 +32,26 @@ namespace Player
 
         // health
         public int Health;
-        public int MaxHealth;
+        public int MaxHealth = 500;
 
         // XP
-        public int Experience;
+        public int Experience = 0;
         public int NextLevelExperience = 10;
-        public int Level;
+        public int Level = 1;
 
         private void Start()
         {
-            Experience = 0;
-            NextLevelExperience = 10;
-            Level = 1;
-
-            //Health = 50;
-            //MaxHealth = 100;
 
             SpeedModifier = 1;
             DamageModifier = 1;
+
+            PermanentHealthAddition = (int)PlayerPrefs.GetFloat(GameStructures.HpIncreaseAmountKey);
+            MaxHealth += PermanentHealthAddition;
+            Health = MaxHealth;
+
+            PermanentDamageAddition = (int)PlayerPrefs.GetFloat(GameStructures.DamageIncreaseFactorKey);
+            DamageModifier += PermanentDamageAddition;
+
             UpdateUI();
         }
 
@@ -92,6 +97,26 @@ namespace Player
         private void FixedUpdate()
         {
             rb.velocity = Orientation * Speed * SpeedModifier;
+
+            int newHealth = (int)PlayerPrefs.GetFloat(GameStructures.HpIncreaseAmountKey);
+            if(newHealth > PermanentHealthAddition)
+            {
+                int diff = newHealth - PermanentHealthAddition;
+                Health += diff;
+                MaxHealth += diff;
+                PermanentHealthAddition += diff;
+                UpdateUI();
+            }
+
+            float newDamage = (int)PlayerPrefs.GetFloat(GameStructures.DamageIncreaseFactorKey);
+            if (newDamage > PermanentDamageAddition)
+            {
+                float diff = newDamage - PermanentDamageAddition;
+                DamageModifier += diff;
+                PermanentDamageAddition += diff;
+                UpdateUI();
+            }
+
         }
 
         public void TakeDamage(int amount)
@@ -141,7 +166,7 @@ namespace Player
             if (rewardId == (int)GameStructures.LevelUpListItems.GiantsHeritage)
             {
                 GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.GiantsHeritage]++;
-                DamageModifier = GameStructures.damageModifierValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.GiantsHeritage]];
+                DamageModifier += GameStructures.damageModifierValues[GameManager.ItemsLevels[(int)GameStructures.LevelUpListItems.GiantsHeritage]];
             }
 
 
@@ -174,7 +199,7 @@ namespace Player
 
                 GameManager.StartLevelUp();
                 Experience -= NextLevelExperience;
-                NextLevelExperience = (int)((float)NextLevelExperience * 1.25); // increase next level threshold
+                NextLevelExperience = (int)((float)NextLevelExperience * 2.5); // increase next level threshold
 
                 Level++;
                 UpdateUI();

@@ -13,7 +13,7 @@ public class GameStructures
     }
 
     static public float[] speedModifiersValues = { 1f, 1.25f, 1.5f, 2f, 2.5f, 3f };
-    static public float[] damageModifierValues = { 1f, 1.25f, 1.5f, 2f, 2.5f, 3f };
+    static public float[] damageModifierValues = { 0f, 0.25f, 0.25f, 0.5f, 0.5f, 0.5f };
     static public int[] healthUpgradeValues = { 50, 50, 100, 100, 150, 150 };
 
     public enum LevelUpListItems
