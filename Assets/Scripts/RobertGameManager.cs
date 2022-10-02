@@ -68,9 +68,6 @@ public class RobertGameManager : MonoBehaviour
 
     public void FinnishLevelUp(int rewardId)
     {
-
-        //if (rewardId >= 0)
-        //    itemLevelsUIController.LevelUpItem(rewardId, ItemsLevels[rewardId]);
         LevelUpMenu.SetActive(false);
         Time.timeScale = 1;
     }
