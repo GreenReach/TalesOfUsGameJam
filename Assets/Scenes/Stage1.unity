@@ -472,6 +472,10 @@ PrefabInstance:
       propertyPath: SpellBookWeapon
       value: 
       objectReference: {fileID: 1315936555}
+    - target: {fileID: 5280432449305364887, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5280432449305364888, guid: ebdc489586f4bed4196a0996e4585d28, type: 3}
       propertyPath: m_RootOrder
       value: 5
