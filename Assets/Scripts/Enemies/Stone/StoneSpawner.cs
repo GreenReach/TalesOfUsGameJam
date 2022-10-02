@@ -1,4 +1,5 @@
 ﻿using System;
+using Commons;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +14,7 @@ namespace Enemies.Stone
         [SerializeField] private StoneController stonePrefab;
         [SerializeField] private float maxPlayerDistance = 20f;
         [SerializeField] private PlayerController playerController;
+        [SerializeField] private ObjectiveIndicator indicator;
 
         private StoneController _stoneInstance;
         private int _currentStoneLevel;
@@ -43,6 +45,9 @@ namespace Enemies.Stone
             _stoneInstance.SetLevel(_currentStoneLevel);
             _currentStoneLevel++;
 
+            if(indicator != null)
+                indicator.SetTarget(_stoneInstance.transform);
+            
             _stoneInstance.OnStoneDestroyed += StoneDestroyedHandler;
         }
 
