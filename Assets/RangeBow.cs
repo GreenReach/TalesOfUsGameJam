@@ -63,7 +63,9 @@ public class RangeBow : GeneralWeapon
 
     private void LaunchProjectileAt(EnemyBase target, int i)
     {
-        
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Play();
+
             var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity, transform);
             projectile.transform.right = projectile.transform.position - target.transform.position;
             projectile.Init(target, i);

@@ -16,6 +16,9 @@ public class ExperiencePickerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "XP/Normal")
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
+
             playerController.GetXP();
             Destroy(collision.gameObject);
         }

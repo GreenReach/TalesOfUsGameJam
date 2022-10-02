@@ -37,6 +37,9 @@ public class Sword : GeneralWeapon
         
     }
     void hit(){
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Play();
+
         switch (target.gameObject.GetComponent<PlayerController>().Direction)
         {   
             case GameStructures.Direction.Right:

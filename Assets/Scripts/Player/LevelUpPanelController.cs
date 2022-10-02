@@ -12,6 +12,10 @@ public class LevelUpPanelController : MonoBehaviour
 
     public void OnEnable()
     {
+
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Play();
+
         PlayerController playerController = Player.GetComponent<PlayerController>();
         // TODO get a structure with all levels from weapons + passive items
         int Choice1Reward = Random.Range(0, 6);

@@ -121,6 +121,9 @@ namespace Player
 
         public void TakeDamage(int amount)
         {
+            if(!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
+
             Health -= amount;
             UpdateUI();
 
@@ -199,7 +202,7 @@ namespace Player
 
                 GameManager.StartLevelUp();
                 Experience -= NextLevelExperience;
-                NextLevelExperience = (int)((float)NextLevelExperience * 2.5); // increase next level threshold
+                NextLevelExperience = (int)((float)NextLevelExperience * 1.75); // increase next level threshold
 
                 Level++;
                 UpdateUI();
