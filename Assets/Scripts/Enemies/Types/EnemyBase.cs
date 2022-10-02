@@ -16,9 +16,9 @@ namespace Enemies.Types
         [SerializeField] protected float backlashAmount = 0.7f;
         [SerializeField] private GameObject[] dropoutItemsPrefabs;
 
-        [Header("Dependencies")] [SerializeField]
-        private CharacterController characterController;
-
+        [Header("Dependencies")]
+        [SerializeField] private CharacterController characterController;
+        [SerializeField] private GameObject textureChild;
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private EnemyLifecycleEventChannel enemyInstantiatedChannel;
         [SerializeField] private EnemyLifecycleEventChannel enemyDiedChannel;
@@ -36,7 +36,6 @@ namespace Enemies.Types
 
         public void DoDamage(int amount)
         {
-            Debug.Log($"Do damage: {amount}", this);
             hp -= amount;
             UpdateHealthBar();
             ApplyBacklash();
@@ -79,9 +78,9 @@ namespace Enemies.Types
             var targetPosition = _target.transform.position;
             var myPosition = transform.position;
             if (targetPosition.x < myPosition.x)
-                transform.localEulerAngles = Vector3.zero;
+                textureChild.transform.localEulerAngles = Vector3.zero;
             else
-                transform.localEulerAngles = Vector3.up * 180f;
+                textureChild.transform.localEulerAngles = Vector3.up * 180f;
         }
 
         private void ApplyBacklash()
