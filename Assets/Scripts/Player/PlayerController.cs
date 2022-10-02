@@ -162,27 +162,45 @@ namespace Player
             UpdateUI();
         }
 
+        public void GetXP()
+        {
+            Experience++;
+
+            if (Experience >= NextLevelExperience)
+            {
+
+                GameManager.StartLevelUp();
+                Experience -= NextLevelExperience;
+                NextLevelExperience = (int)((float)NextLevelExperience * 1.25); // increase next level threshold
+
+                Level++;
+                UpdateUI();
+            }
+
+            UpdateUI();
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log(collision.gameObject.tag);
+            //Debug.Log(collision.gameObject.tag);
             if (collision.gameObject.tag == "XP/Normal")
             {
 
-                Experience++;
+                //Experience++;
 
-                if(Experience >= NextLevelExperience)
-                {
+                //if(Experience >= NextLevelExperience)
+                //{
 
-                    GameManager.StartLevelUp();
-                    Experience -= NextLevelExperience;
-                    NextLevelExperience =(int)((float)NextLevelExperience *  1.25); // increase next level threshold
+                //    GameManager.StartLevelUp();
+                //    Experience -= NextLevelExperience;
+                //    NextLevelExperience =(int)((float)NextLevelExperience *  1.25); // increase next level threshold
 
-                    Level++;
-                    UpdateUI();
-                }
+                //    Level++;
+                //    UpdateUI();
+                //}
 
-                UpdateUI();
-                Destroy(collision.gameObject);
+                //UpdateUI();
+                //Destroy(collision.gameObject);
             }
             else if(collision.gameObject.tag == "HealthDrop")
             {
