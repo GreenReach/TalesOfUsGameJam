@@ -1,6 +1,7 @@
 ﻿using Commons;
 using Enemies.Stone;
 using Player;
+using TMPro;
 using UnityEngine;
 
 namespace Enemies.Types
@@ -12,10 +13,12 @@ namespace Enemies.Types
         [SerializeField] protected int damage = 3;
         [SerializeField] protected float attackRange = .5f;
         [SerializeField] protected float attackCooldown = 0.3f;
+        [SerializeField] protected float backlashAmount = 0.7f;
         [SerializeField] private GameObject[] dropoutItemsPrefabs;
-        
-        [Header("Dependencies")]
-        [SerializeField] private CharacterController characterController;
+
+        [Header("Dependencies")] [SerializeField]
+        private CharacterController characterController;
+
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private EnemyLifecycleEventChannel enemyInstantiatedChannel;
         [SerializeField] private EnemyLifecycleEventChannel enemyDiedChannel;
@@ -23,6 +26,7 @@ namespace Enemies.Types
 
         private float _lastAttackTime = -100f;
         private float _maxHp;
+        private PlayerController _target;
 
         private void Awake()
         {
@@ -35,12 +39,14 @@ namespace Enemies.Types
             Debug.Log($"Do damage: {amount}", this);
             hp -= amount;
             UpdateHealthBar();
+            ApplyBacklash();
             if (hp <= 0)
                 Kill();
         }
 
         public void MoveTowardsPlayer(PlayerController target, float deltaTime)
         {
+            _target = target;
             var targetPosition = target.transform.position;
             var currentPosition = transform.position;
 
@@ -64,8 +70,14 @@ namespace Enemies.Types
             hp = (int)(hp * factor);
             damage = (int)(damage * factor);
         }
-        
+
         protected abstract void Attack(PlayerController target);
+
+        private void ApplyBacklash()
+        {
+            var backlashDirection = (transform.position - _target.transform.position).normalized;
+            characterController.Move(backlashDirection * backlashAmount);
+        }
 
         private void UpdateHealthBar()
         {

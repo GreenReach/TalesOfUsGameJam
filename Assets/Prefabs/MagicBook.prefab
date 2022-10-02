@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLevel: 0
-  rotatingSpeed: 30
+  rotatingSpeed: 180
   circleRadius: 1.5
   magicBookDamageGiverPrefab: {fileID: 8256487102399128197, guid: 90010e168b33eff4cbba6ce3196914f4, type: 3}
   levelDataSO: {fileID: 11400000, guid: 0648b6034108b054c8beedca6f7760f5, type: 2}
